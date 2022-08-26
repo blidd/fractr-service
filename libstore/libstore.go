@@ -1,7 +1,6 @@
 package libstore
 
 import (
-	"context"
 	"fmt"
 
 	pb "github.com/blidd/fractr-proto/storage"
@@ -44,37 +43,39 @@ func (ls *Libstore) NewStorageServiceClient() (pb.StorageClient, error) {
 }
 
 func (ls *Libstore) Get(primaryMarket bool, docType pb.Type, artistName, artTitle string, id uint32, ids []uint32) (*pb.GetResponse, error) {
-	req := &pb.GetRequest{
-		Type:          docType,
-		Id:            &id,
-		Ids:           ids,
-		PrimaryMarket: &primaryMarket,
-		ArtistName:    &artistName,
-		ArtTitle:      &artTitle,
-	}
-	client, err := ls.NewStorageServiceClient()
-	if err != nil {
-		return &pb.GetResponse{}, fmt.Errorf("error occurred while dialing storage service: %v", err)
-	}
+	// req := &pb.GetRequest{
+	// 	Type:          docType,
+	// 	Id:            &id,
+	// 	Ids:           ids,
+	// 	PrimaryMarket: &primaryMarket,
+	// 	ArtistName:    &artistName,
+	// 	ArtTitle:      &artTitle,
+	// }
+	// client, err := ls.NewStorageServiceClient()
+	// if err != nil {
+	// 	return &pb.GetResponse{}, fmt.Errorf("error occurred while dialing storage service: %v", err)
+	// }
 
-	return client.Get(context.Background(), req)
+	// return client.Get(context.Background(), req)
+	return &pb.GetResponse{}, nil
 }
 
 func (ls *Libstore) Put(docType pb.Type, id uint32, ids []uint32, primaryMarket bool, artistName, artTitle string) (*pb.PutResponse, error) {
-	req := &pb.PutRequest{
-		Type:          docType,
-		Id:            &id,
-		Ids:           ids,
-		PrimaryMarket: &primaryMarket,
-		ArtistName:    &artistName,
-		ArtTitle:      &artTitle,
-	}
-	client, err := ls.NewStorageServiceClient()
-	if err != nil {
-		return &pb.PutResponse{}, fmt.Errorf("error occurred while dialing storage service: %v", err)
-	}
+	// req := &pb.PutRequest{
+	// 	Type:          docType,
+	// 	Id:            &id,
+	// 	Ids:           ids,
+	// 	PrimaryMarket: &primaryMarket,
+	// 	ArtistName:    &artistName,
+	// 	ArtTitle:      &artTitle,
+	// }
+	// client, err := ls.NewStorageServiceClient()
+	// if err != nil {
+	// 	return &pb.PutResponse{}, fmt.Errorf("error occurred while dialing storage service: %v", err)
+	// }
 
-	return client.Put(context.Background(), req)
+	// return client.Put(context.Background(), req)
+	return &pb.PutResponse{}, nil
 
 }
 
